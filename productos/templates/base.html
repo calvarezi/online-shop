@@ -1,58 +1,73 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Mi Sitio Web{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+  <body>
+    <header class="header">
+      <div class="header__logo">
+        <a href="{% url 'lista-productos' %}" class="logo">Mi Sitio Web</a>
+      </div>
+      <nav class="header__nav">
+        <div class="header__search">
+          <input type="text" class="search__input" placeholder="Buscar..." />
+          <button class="search__button">Buscar</button>
+        </div>
+        <div class="header__user">
+          {% if user.is_authenticated %}
+          <a href="#" class="user__cart">Carrito</a>
+          <a href="{% url 'logout' %}" class="user__logout">Cerrar Sesión</a>
+          {% else %}
+          <a href="{% url 'login' %}" class="user__login">Iniciar Sesión</a>
+          <a href="{% url 'signup' %}" class="user__register">Registrarse</a>
+          {% endif %}
+        </div>
+      </nav>
+    </header>
 
-<body>
+    <main class="main-content">
+      {% block content %}
+      <!-- Contenido del bloque 'content' -->
+      {% endblock %}
+    </main>
 
-  <nav class="navbar navbar--dark">
-    <a class="navbar__brand" href="#">
-      <img src="{% static 'img/logo.jpeg' %}" width="120" alt="Logo">
-    </a>
-    <button class="navbar__toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar__toggler-icon"></span>
-    </button>
-    <div class="collapse navbar__collapse" id="navbarNav">
-      <ul class="navbar__nav navbar__nav--right">
-        <li class="nav__item nav__item--active">
-          <a class="nav__link" href="{% url 'lista-productos' %}">Inicio</a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#">Productos</a>
-        </li>
-      </ul>
-      <form class="form--inline form--inline--right">
-        <input class="form__control form__control--search" type="search" placeholder="Buscar">
-        <button class="btn btn--outline btn--outline-light" type="submit">Buscar</button>
-      </form>
-      <ul class="navbar__nav navbar__nav--right">
-        {% if user.is_authenticated %}
-        <li class="nav__item">
-          <a class="nav__link" href="{% url 'logout' %}">Logout</a>
-        </li>
-        {% else %}
-        <li class="nav__item">
-          <a class="nav__link" href="{% url 'login' %}">Login</a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="{% url 'signup' %}">Registro</a>
-        </li>
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
+    <footer class="footer">
+      <div class="seccion__contenedor">
+        <div class="footer__contacto">
+          <h3>Contacto</h3>
+          <p>Dirección: Calle Principal 123, Ciudad</p>
+          <p>Email: info@example.com</p>
+          <p>Teléfono: +123 456 789</p>
+        </div>
 
-  <main class="container main--pt-4 main--pb-5">
-    {% block content %}
-    {% endblock %}
-  </main>
+        <div class="footer__redes-sociales">
+          <h3>Redes Sociales</h3>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
 
-</body>
+        <div class="footer__politica">
+          <h3>Política</h3>
+          <ul>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+          </ul>
+        </div>
+      </div>
 
+      <div class="footer__copyright">
+        <p>&copy; {% now "Y" %} Mi Sitio Web. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </body>
 </html>
+

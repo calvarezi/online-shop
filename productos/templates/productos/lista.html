@@ -1,33 +1,53 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <!-- Filtros sidebar -->
-    </div>
-    <div class="col-9">
-      <h1 class="text-center">Productos</h1>
-      {% if object_list %}
-      <div class="row">
-        {% for producto in object_list %}
-        <div class="col-6 col-md-4 col-lg-3 mb-3">
-          <div class="card shadow">
-            <img src="{{ producto.imagen.url }}" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">{{ producto.nombre }}</h5>
-              <p class="text-muted">{{ producto.descripcion }}</p>
-              <p class="lead font-weight-bold py-2">${{ producto.precio }}</p>
-              <a href="{% url 'detalle-producto' producto.slug %}" class="btn btn-primary btn-sm">Ver producto</a>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
+<div class="container__main">
+  <div class="sidebar">
+    <h3>Categorías</h3>
+    <ul class="sidebar__categories">
+      {% for categoria in categorias %}
+      <li>
+        <a href="#">{{ categoria.nombre }}</a>
+        <ul class="subcategorias">
+          {% for subcategoria in categoria.subcategorias.all %}
+          <li><a href="#">{{ subcategoria.nombre }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- Resto del contenido de la página -->
+</div>
+  <div class="main-content">
+    <div class="mosaico-productos">
+      {% for producto in productos %}
+      <div class="producto-card">
+        <a href="{% url 'detalle-producto' producto.slug %}">
+          <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
+        </a>
+        <h3>{{ producto.nombre }}</h3>
+        <p>Precio: ${{ producto.precio }}</p>
       </div>
-      {% else %}
-      <p class="text-center mt-4">No hay productos disponibles</p>
-      {% endif %}
+      {% endfor %}
     </div>
   </div>
 </div>
+
+
+<script>
+// Si prefieres JavaScript puro
+document.addEventListener("DOMContentLoaded", function() {
+  const categorias = document.querySelectorAll(".sidebar__categories li");
+  categorias.forEach(function(categoria) {
+    categoria.addEventListener("mouseenter", function() {
+      this.querySelector(".subcategorias").classList.add("show");
+    });
+    categoria.addEventListener("mouseleave", function() {
+      this.querySelector(".subcategorias").classList.remove("show");
+    });
+  });
+});
+</script>
+
 {% endblock %}
