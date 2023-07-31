@@ -1,77 +1,58 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
 
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar--dark">
+    <a class="navbar__brand" href="#">
+      <img src="{% static 'img/logo.jpeg' %}" width="120" alt="Logo">
+    </a>
+    <button class="navbar__toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar__toggler-icon"></span>
+    </button>
+    <div class="collapse navbar__collapse" id="navbarNav">
+      <ul class="navbar__nav navbar__nav--right">
+        <li class="nav__item nav__item--active">
+          <a class="nav__link" href="{% url 'lista-productos' %}">Inicio</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">Productos</a>
+        </li>
+      </ul>
+      <form class="form--inline form--inline--right">
+        <input class="form__control form__control--search" type="search" placeholder="Buscar">
+        <button class="btn btn--outline btn--outline-light" type="submit">Buscar</button>
+      </form>
+      <ul class="navbar__nav navbar__nav--right">
+        {% if user.is_authenticated %}
+        <li class="nav__item">
+          <a class="nav__link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav__item">
+          <a class="nav__link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="{% url 'signup' %}">Registro</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
 
-  <a class="navbar-brand" href="#">
-    <img src="{% static 'img/logo.jpeg' %}" width="120">
-  </a>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarNav">
-
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Productos</a>
-      </li>
-    </ul>
-
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
-
-    <ul class="navbar-nav ml-auto">
-      {% if user.is_authenticated %}
-
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-      </li>
-      
-      {% else %}
-      
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'signup' %}">Registro</a>
-      </li>
-      
-      {% endif %}
-    </ul>
-
-  </div>
-
-</nav>
-
-<main class="container pt-4 pb-5">
-  {% block content %}
-  
-  {% endblock %}  
-</main>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <main class="container main--pt-4 main--pb-5">
+    {% block content %}
+    {% endblock %}
+  </main>
 
 </body>
+
 </html>
