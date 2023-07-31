@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+  
+    <h2 class="text-center mb-4">Registro de Usuario</h2>
+
+    <div class="card p-4">
+    
+      <form method="POST">
+      
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        {% if form.non_field_errors %}
+         <p class="text-danger">
+           {{ form.non_field_errors }}
+         </p>
+        {% endif %}
+
+        {% if form.username.errors %}
+         <p class="text-danger">
+           {{ form.username.errors }}
+         </p>
+        {% endif %}
+
+        {% if form.password2.errors %}
+         <p class="text-danger">
+           {{ form.password2.errors }} 
+         </p>
+        {% endif %}
+      
+        <button class="btn btn-primary btn-block">Registrarse</button>
+      
+      </form>
+    
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
