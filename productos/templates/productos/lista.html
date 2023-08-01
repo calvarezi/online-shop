@@ -3,51 +3,47 @@
 {% block content %}
 <div class="container__main">
   <div class="sidebar">
-    <h3>Categorías</h3>
+    <h3 class="sidebar__title">Categorías</h3>
     <ul class="sidebar__categories">
       {% for categoria in categorias %}
-      <li>
-        <a href="#">{{ categoria.nombre }}</a>
+      <li class="categoria">
+        <a href="#" class="categoria__link">{{ categoria.nombre }}</a>
         <ul class="subcategorias">
           {% for subcategoria in categoria.subcategorias.all %}
-          <li><a href="#">{{ subcategoria.nombre }}</a></li>
+          <li>
+            <a href="#" class="subcategoria__link">{{ subcategoria.nombre }}</a>
+          </li>
           {% endfor %}
         </ul>
       </li>
       {% endfor %}
     </ul>
   </div>
-  <!-- Resto del contenido de la página -->
-</div>
-  <div class="main-content">
-    <div class="mosaico-productos">
-      {% for producto in productos %}
-      <div class="producto-card">
-        <a href="{% url 'detalle-producto' producto.slug %}">
-          <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
-        </a>
-        <h3>{{ producto.nombre }}</h3>
-        <p>Precio: ${{ producto.precio }}</p>
-      </div>
-      {% endfor %}
-    </div>
+  <div class="cupones__item">
+    <p>hola mundo</p>
+  </div>
+  <div class="carousel__item">
+    <p>hola mundo</p>
+  </div>
+  <div class="ofertas__item">
+    <p>hola mundo</p>
+  </div>
+  <div class="user__item">
+    <p>hola mundo</p>
   </div>
 </div>
-
-
-<script>
-// Si prefieres JavaScript puro
-document.addEventListener("DOMContentLoaded", function() {
-  const categorias = document.querySelectorAll(".sidebar__categories li");
-  categorias.forEach(function(categoria) {
-    categoria.addEventListener("mouseenter", function() {
-      this.querySelector(".subcategorias").classList.add("show");
-    });
-    categoria.addEventListener("mouseleave", function() {
-      this.querySelector(".subcategorias").classList.remove("show");
-    });
-  });
-});
-</script>
+<div class="main-content">
+  <div class="mosaico-productos">
+    {% for producto in productos %}
+    <div class="producto-card">
+      <a href="{% url 'detalle-producto' producto.slug %}">
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
+      </a>
+      <h3>{{ producto.nombre }}</h3>
+      <p>Precio: ${{ producto.precio }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock %}

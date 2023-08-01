@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Estilos del header */
+.header {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    /* Aplica espacio entre elementos */
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.header__search {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 500px;
+}
+
+.header__search i {
+    margin-right: 5px;
+}
+
+.search__input {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.search__button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header__user a {
+    margin-left: 10px;
+}
+
+/* Estilos del main-content */
+.main-content {
+    padding: 20px;
+}
+
+/* Estilos del footer */
+.seccion__contenedor {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.seccion__contenedor h3 {
+    align-items: center;
+    margin: 15px 0;
+}
+
+.footer {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.footer__contacto,
+.footer__redes-sociales,
+.footer__politica {
+    margin-bottom: 20px;
+}
+
+.footer__contacto h3,
+.footer__redes-sociales h3,
+.footer__politica h3 {
+    margin-bottom: 10px;
+}
+
+.footer__contacto p,
+.footer__redes-sociales ul,
+.footer__politica ul {
+    margin: 5px 0;
+}
+
+.footer__redes-sociales ul li,
+.footer__politica ul li {
+    margin-bottom: 5px;
+}
+
+.footer__contacto i,
+.footer__redes-sociales i,
+.footer__politica i {
+    margin-right: 5px;
+}
+
+.footer__copyright {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .header__search {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .header__user {
+        margin-top: 10px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .footer__contacto,
+    .footer__redes-sociales,
+    .footer__politica {
+        margin-bottom: 10px;
+    }
+}
+
+/* Estilos para el contenedor principal */
+.container__main {
+    display: grid;
+    width: 100%;
+    height: 600px;
+    grid-template-columns: 239px 1fr 1fr 1fr 1fr;
+    grid-template-rows: 117px 1fr 1fr 107px;
+    grid-gap: 3rem;
+    grid-template-areas:
+      "sidebar cupones carousel carousel carousel"
+      "sidebar ofertas carousel carousel carousel"
+      "sidebar user user user user";
+  }
+  
+  /* Estilos para la barra lateral (sidebar) */
+  .sidebar {
+    grid-area: sidebar;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar__title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .sidebar__categories {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar__categories li {
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  /* Estilos para la animación de subcategorías */
+  .subcategorias {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding-left: 20px;
+  }
+  
+  .categoria:hover .subcategorias {
+    max-height: 200px;
+    transition: max-height 0.3s ease-in;
+  }
+  
+  .subcategorias li {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    margin-top: 5px;
+  }
+  
+  .subcategorias li:first-child {
+    margin-top: 0;
+  }
+  
+  .subcategorias li:hover {
+    opacity: 1;
+  }
+  
+  /* Estilos para los enlaces */
+  a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  a:hover {
+    color: #0056b3;
+  }
+  
+  /* Estilos adicionales para el efecto de diferenciación */
+  .categoria__link {
+    padding-left: 15px;
+    position: relative;
+  }
+  
+  .categoria__link:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #007bff;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .categoria:hover .categoria__link:before {
+    opacity: 1;
+  }
+  
+  /* Estilos para los elementos del contenido principal */
+  .cupones__item {
+    grid-area: cupones;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .carousel__item {
+    grid-area: carousel;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .ofertas__item {
+    grid-area: ofertas;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .user__item {
+    grid-area: user;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  /* Estilos para los productos en el mosaico */
+  .main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .producto-card {
+    width: calc(25% - 20px);
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+  
+  .producto-card img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  .producto-card h3 {
+    margin-top: 10px;
+  }
+  
+  .producto-card p {
+    margin-top: 5px;
+  }
+  
