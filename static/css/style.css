@@ -169,13 +169,18 @@ body {
 .info__item {
   grid-area: info;
   background-color: #fff;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   height: 60px;
   justify-content: space-evenly;
+  align-items: center;
 }
+
+.info__item i {
+  font-size: 27px;
+  margin-right: 6px;}
 
 /* Estilos para el sidebar */
 .sidebar {
@@ -352,21 +357,32 @@ body {
 
 .slick-list {
   height: 100% !important;
-}
+  width: 97% !important;}
 
-.slick-track{
+.slick-track {
   height: 297px !important;
 }
-.slick-slider{
+
+.slick-slider {
   width: 300px !important;
 }
+
 .carousel__group img {
   object-fit: contain;
   width: 10% !important;
   height: 49% !important;
-margin-bottom: 4px;}
-.slick-slide{
+}
+
+.slick-slide {
   height: 0px;
+}
+
+.carousel__item {
+  grid-area: carousel;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 140px;
 }
 
 
