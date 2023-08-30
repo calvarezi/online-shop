@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="container__main">
   <div class="sidebar">
@@ -19,17 +19,62 @@
       {% endfor %}
     </ul>
   </div>
+  <div class="info__item">
+    <spam>Pagos seguros y fiable</spam>
+    <spam>Garantia de reembolso</spam>
+    <spam>Servicio de atencion al cliente 24/7</spam>
+  </div>
   <div class="cupones__item">
-    <p>hola mundo</p>
+    <div class="cont__cupones">
+      <a href="">
+        <div class="cupone__mensaje">Tu guía de compra favorita</div>
+        <div class="cupone__mensaje2">Descubre las últimas novedades</div>
+      </a>
+      <section class="ccupon">
+        <div class="carousel">
+          <div class="carousel__group">
+            <img src="{% static 'img/imagen1.jpg' %}" alt="Imagen 1" class="imagen1">
+            <img src="{% static 'img/imagen2.jpg' %}" alt="Imagen 2" class="imagen2">
+            <img src="{% static 'img/imagen3.jpg' %}" alt="Imagen 3" class="imagen3">
+            <img src="{% static 'img/imagen4.jpg' %}" alt="Imagen 4" class="imagen4">
+            <img src="{% static 'img/imagen5.jpg' %}" alt="Imagen 1" class="imagen1">
+            <img src="{% static 'img/imagen6.jpg' %}" alt="Imagen 2" class="imagen2">
+            <img src="{% static 'img/imagen7.jpg' %}" alt="Imagen 3" class="imagen3">
+            <img src="{% static 'img/imagen8.jpg' %}" alt="Imagen 4" class="imagen4">
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
   <div class="carousel__item">
-    <p>hola mundo</p>
+    <p>carousel item</p>
   </div>
   <div class="ofertas__item">
-    <p>hola mundo</p>
+    <div class="direction">
+      <div class="oferta__info"></div>
+      <div class="oferta__img"></div>
+    </div>
   </div>
   <div class="user__item">
-    <p>hola mundo</p>
+    <div class="user__saludo">
+      <span>Bienvenid@ a ShopExpress</span>
+    </div>
+      {% if user.is_authenticated %}
+      <div class="user__links">
+        <div class="logout__link">
+          <a href="{% url 'logout' %}" class="user__logout">Cerrar Sesión</a>
+        </div>
+        {% else %}
+        <div class="user__links2">
+          <div class="registrarse__link">
+            <a href="{% url 'signup' %}" class="user__register">Registrarse</a>
+          </div>
+          <div class="login__link">
+            <a href="{% url 'login' %}" class="user__login">Iniciar Sesión</a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
   </div>
 </div>
 <div class="main-content">
@@ -45,5 +90,6 @@
     {% endfor %}
   </div>
 </div>
-
 {% endblock %}
+
+        
