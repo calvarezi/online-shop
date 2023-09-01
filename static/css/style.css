@@ -178,9 +178,17 @@ body {
   align-items: center;
 }
 
+.info__item span {
+  align-items: center;
+  display: flex;
+}
+
 .info__item i {
-  font-size: 27px;
-  margin-right: 6px;}
+  font-size: 28px;
+  margin-right: 15px;
+  color: orangered;
+}
+
 
 /* Estilos para el sidebar */
 .sidebar {
@@ -281,7 +289,6 @@ body {
   border-radius: 10px;
   padding: 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
 }
 
 .cont__cupones {
@@ -344,45 +351,32 @@ body {
 }
 
 .carousel {
-  width: 290px;
-  height: 294px;
-  overflow: hidden;
-  display: flex;
-}
-
-.ccupon {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.slick-list {
-  height: 100% !important;
-  width: 97% !important;}
-
-.slick-track {
-  height: 297px !important;
-}
-
-.slick-slider {
-  width: 300px !important;
-}
-
-.carousel__group img {
-  object-fit: contain;
-  width: 10% !important;
-  height: 49% !important;
-}
-
-.slick-slide {
-  height: 0px;
-}
-
-.carousel__item {
+  position: relative;
   grid-area: carousel;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 140px;
+  display: flex;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.carousel__item {
+  flex: 0 0 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel__item img {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 
@@ -392,7 +386,6 @@ body {
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
 }
 
 .user__item {
@@ -402,7 +395,6 @@ body {
   padding: 13px;
   height: 140px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
 }
 
 .user__saludo {
