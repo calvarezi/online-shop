@@ -23,6 +23,8 @@ $(document).ready(function () {
       }
     }
   );
+  $(".novedad-image").css("display", "flex"); // Ajusta el valor de margen según tus necesidades4
+  $(".novedad-image").css("gap", "5px"); // Ajusta el valor de margen según tus necesidades4
 });
 
 $(document).ready(function () {
@@ -34,6 +36,6 @@ $(document).ready(function () {
     arrows: false,
     adaptiveHeight: true,
     centerPadding: "70 px ",
-    lazyLoad: 'ondemand',
+    lazyLoad: "ondemand",
   });
 });

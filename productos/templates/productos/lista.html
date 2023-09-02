@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
 <div class="container__main">
   <div class="sidebar">
     <h3 class="sidebar__title">Categorías</h3>
@@ -31,105 +33,109 @@
         <div class="cupone__mensaje2">Descubre las últimas novedades</div>
       </a>
       <section class="ccupon">
-        <div class="carousel-1">
-        </div>
+        <div class="carousel-1"></div>
         <div class="carousel__group">
-          <img
-            src="{% static 'img/Novedades/imagen1.jpg' %}"
-            alt="Imagen 1"
-            class="imagen1"
-          />
-          <img
-            src="{% static 'img/Novedades/imagen2.jpg' %}"
-            alt="Imagen 2"
-            class="imagen2"
-          />
-          <img
-            src="{% static 'img/Novedades/imagen3.jpg' %}"
-            alt="Imagen 3"
-            class="imagen3"
-          />
-          <img
-            src="{% static 'img/Novedades/imagen4.jpg' %}"
-            alt="Imagen 4"
-            class="imagen4"
-          />
-          <img
-            src="{% static 'img/Novedades/imagen5.jpg' %}"
-            alt="Imagen 1"
-            class="imagen1"
-          />
-          <img
-            src="{% static 'img/Novedades/imagen6.jpg' %}"
-            alt="Imagen 2"
-            class="imagen2"
-          />
-          <img
-            src="{% static 'img/Novedades/imagen7.jpg' %}"
-            alt="Imagen 3"
-            class="imagen3"
-          />
-          <img
-            src="{% static 'img/Novedades/imagen8.jpg' %}"
-            alt="Imagen 4"
-            class="imagen4"
-          />
+          <div class="image-container">
             <img
               src="{% static 'img/Novedades/imagen1.jpg' %}"
               alt="Imagen 1"
-              class="imagen1"
+              class="novedad-image"
             />
+          </div>
+          <div class="image-container">
             <img
               src="{% static 'img/Novedades/imagen2.jpg' %}"
               alt="Imagen 2"
-              class="imagen2"
+              class="novedad-image"
             />
+          </div>
+          <div class="image-container">
             <img
               src="{% static 'img/Novedades/imagen3.jpg' %}"
               alt="Imagen 3"
-              class="imagen3"
+              class="novedad-image"
             />
+          </div>
+          <div class="image-container">
             <img
               src="{% static 'img/Novedades/imagen4.jpg' %}"
               alt="Imagen 4"
-              class="imagen4"
+              class="novedad-image"
             />
+          </div>
+          <div class="image-container">
             <img
               src="{% static 'img/Novedades/imagen5.jpg' %}"
-              alt="Imagen 1"
-              class="imagen1"
+              alt="Imagen 5"
+              class="novedad-image"
             />
+          </div>
+          <div class="image-container">
             <img
               src="{% static 'img/Novedades/imagen6.jpg' %}"
-              alt="Imagen 2"
-              class="imagen2"
+              alt="Imagen 6"
+              class="novedad-image"
             />
+          </div>
+          <div class="image-container">
             <img
               src="{% static 'img/Novedades/imagen7.jpg' %}"
-              alt="Imagen 3"
-              class="imagen3"
+              alt="Imagen 7"
+              class="novedad-image"
             />
+          </div>
+          <div class="image-container">
             <img
               src="{% static 'img/Novedades/imagen8.jpg' %}"
-              alt="Imagen 4"
-              class="imagen4"
+              alt="Imagen 8"
+              class="novedad-image"
             />
+          </div>
         </div>
       </section>
     </div>
   </div>
   <div class="carousel">
     <div class="carousel__item">
-        <img src="{% static 'img/Carousel/imagen1.jpg' %}" alt="Imagen 1" class="carousel__image" />
-        <img src="{% static 'img/Carousel/imagen2.jpg' %}" alt="Imagen 2" class="carousel__image" />
-        <img src="{% static 'img/Carousel/imagen3.jpg' %}" alt="Imagen 3" class="carousel__image" />
+      <img
+        src="{% static 'img/Carousel/imagen1.jpg' %}"
+        alt="Imagen 1"
+        class="carousel__image"
+      />
+      <img
+        src="{% static 'img/Carousel/imagen2.jpg' %}"
+        alt="Imagen 2"
+        class="carousel__image"
+      />
+      <img
+        src="{% static 'img/Carousel/imagen3.jpg' %}"
+        alt="Imagen 3"
+        class="carousel__image"
+      />
     </div>
-</div>
+  </div>
 
   <div class="ofertas__item">
-    <div class="direction">
-      <div class="oferta__info"></div>
-      <div class="oferta__img"></div>
+    <div class="oferta__info">
+      <a href="" class="oferta__link">
+        <img
+          src="https://ae01.alicdn.com/kf/S12d218f2404348e4986aad8f45e62b7dO/471x96.png_.webp"
+          alt=""
+          class="oferta__imagen"
+        />
+        <p class="oferta__descripcion">Productos top a precios increíbles</p>
+      </a>
+      <div class="ver-mas">
+        <a href="" class="ver-mas__enlace">Ver más</a>
+      </div>
+    </div>
+    <div class="oferta__img">
+      <a href="">
+        <div>
+          <img src="" alt="" />
+        </div>
+        <div></div>
+      </a>
     </div>
   </div>
   <div class="user__item">
