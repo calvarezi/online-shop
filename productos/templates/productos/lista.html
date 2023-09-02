@@ -1,6 +1,4 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container__main">
   <div class="sidebar">
     <h3 class="sidebar__title">Categorías</h3>
@@ -129,15 +127,55 @@
         <a href="" class="ver-mas__enlace">Ver más</a>
       </div>
     </div>
-    <div class="oferta__img">
-      <a href="">
-        <div>
-          <img src="" alt="" />
-        </div>
-        <div></div>
-      </a>
+
+    <div class="oferta_img_contenedor">
+      <div class="oferta_item">
+        <a href="">
+          <div>
+            <img src="{% static 'img/Novedades/imagen7.jpg' %}" alt="" />
+          </div>
+          <div class="oferta_precio">
+            <span class="cop">cop</span>
+            <span class="precio_oferta">12.371</span>
+          </div>
+        </a>
+      </div>
+      <div class="oferta_item">
+        <a href="">
+          <div>
+            <img src="{% static 'img/Novedades/imagen7.jpg' %}" alt="" />
+          </div>
+          <div class="oferta_precio">
+            <span class="cop">cop</span>
+            <span class="precio_oferta">18.756</span>
+          </div>
+        </a>
+      </div>
+      <div class="oferta_item">
+        <a href="">
+          <div>
+            <img src="{% static 'img/Novedades/imagen7.jpg' %}" alt="" />
+          </div>
+          <div class="oferta_precio">
+            <span class="cop">cop</span>
+            <span class="precio_oferta">125.700</span>
+          </div>
+        </a>
+      </div>
+      <div class="oferta_item">
+        <a href="">
+          <div>
+            <img src="{% static 'img/Novedades/imagen7.jpg' %}" alt="" />
+          </div>
+          <div class="oferta_precio">
+            <span class="cop">cop</span>
+            <span class="precio_oferta">549.034</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
+
   <div class="user__item">
     <div class="user__saludo">
       <span>Bienvenid@ a ShopExpress</span>
