@@ -350,6 +350,12 @@ body {
   position: relative;
 }
 
+.carousel__group img {
+  margin-right: 3px !important;
+  display: flex;
+  gap: 1px;
+}
+
 .carousel {
   position: relative;
   grid-area: carousel;
@@ -358,13 +364,13 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   width: 100%;
-  height: auto;
+  height: 96%;
   overflow: hidden;
 }
 
 .carousel__item {
   flex: 0 0 100%;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;

@@ -25,12 +25,15 @@ $(document).ready(function () {
   );
 });
 
-$(document).ready(function(){
-  $('.carousel__item').slick({
-      infinite: true,
-      slidesToShow: 1,
-      autoplay: true,
-      autoplaySpeed: 1000,
-      arrows: false,
+$(document).ready(function () {
+  $(".carousel__item").slick({
+    infinite: true,
+    slidesToShow: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+    adaptiveHeight: true,
+    centerPadding: "70 px ",
+    lazyLoad: 'ondemand',
   });
 });
