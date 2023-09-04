@@ -1,33 +1,34 @@
-{% extends 'base.html' %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
 
 {% block content %}
-
-<div class="row">
-  <div class="col-md-4 offset-md-4">
-    <div class="card">
-      <div class="card-body">
-        
-        <h2 class="text-center">Iniciar sesión</h2>
-      
-        <form method="post" class="form-group">
-        
+<div class="login">
+  <div class="login__container">
+    <div class="login__card">
+      <div class="login__header">
+        <h2 class="login__title">Iniciar sesión</h2>
+      </div>
+      <div class="login__body">
+        <form method="post" class="login__form">
           {% csrf_token %}
-        
-          {{ form.as_p }}
-        
+          <div class="login__form-group">
+            {{ form.username.label_tag }} {{ form.username }}
+          </div>
+          <div class="login__form-group">
+            {{ form.password.label_tag }} {{ form.password }}
+          </div>
           {% if form.errors %}
-           <p class="text-danger">Usuario o contraseña incorrecto</p>
+          <p class="login__error">Usuario o contraseña incorrecto</p>
           {% endif %}
-      
-          <button class="btn btn-primary btn-block">
+          <button class="login__submit-btn btn btn-primary btn-block">
             Iniciar sesión
           </button>
-        
         </form>
-        
       </div>
     </div>
-  </div>  
+  </div>
 </div>
-
 {% endblock %}

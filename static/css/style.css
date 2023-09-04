@@ -75,8 +75,20 @@ body {
 .seccion__contenedor {
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid black !important;
   padding-right: 50px;
+}
+
+.footer__contacto,
+.footer__redes-sociales,
+.footer__politica {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.seccion__contenedor h3 {
+  margin-bottom: 6px;
+
 }
 
 
@@ -87,11 +99,36 @@ body {
   border-top: 1px solid #ccc;
 }
 
-.footer__redes-sociales,
+.footer__redes-sociales li,
 .footer__politica li {
   list-style: none;
+  margin-bottom: 10px;
 }
 
+.footer__redes-sociales a,
+.footer__politica a {
+  text-decoration: none;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+/* Estilo para el icono de Facebook */
+.fa-facebook {
+  color: #1877f2;
+  /* Color original de Facebook */
+}
+
+/* Estilo para el icono de Twitter */
+.fa-twitter {
+  color: #1da1f2;
+  /* Color original de Twitter */
+}
+
+/* Estilo para el icono de Instagram */
+.fa-instagram {
+  color: #c13584;
+  /* Color original de Instagram */
+}
 
 /* Estilos específicos para dispositivos móviles */
 @media (max-width: 768px) {

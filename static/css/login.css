@@ -1,0 +1,19 @@
+.login__container {
+    height: 433px;
+    /* border: 1px solid; */
+    width: 350px;
+    margin: 100px auto;
+    background-color: gray;
+}
+
+.login__card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.login__title {
+    text-align: center;
+    font-size: 30px;
+}

@@ -9,7 +9,7 @@ $(document).ready(function () {
       prevArrow: false,
       nextArrow: false,
       rows: 2,
-      speed: 1000, // Ajustar la velocidad de transición
+      speed: 3000, // Ajustar la velocidad de transición
     });
   }
 
@@ -37,5 +37,6 @@ $(document).ready(function () {
     adaptiveHeight: true,
     centerPadding: "70 px ",
     lazyLoad: "ondemand",
+    speed: 3000,
   });
 });
