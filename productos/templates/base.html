@@ -2,120 +2,74 @@
 
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Sitio Web{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Agregar la biblioteca de Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/9827b3ebcc.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
-    />
-  </head>
-
-  <body>
+    <script src="https://kit.fontawesome.com/9827b3ebcc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+</head>
+<body>
     <header class="header">
-      <nav class="header__nav">
-        <div class="header__logo">
-          <a href="{% url 'lista-productos' %}" class="logo">Mi Sitio Web</a>
-        </div>
-        <div class="header__search">
-          <!-- Agregar el icono de búsqueda -->
-          <i class="fas fa-search"></i>
-          <input type="text" class="search__input" placeholder="Buscar..." />
-          <button class="search__button">Buscar</button>
-        </div>
-        <div class="header__user">
-          <!-- {% if user.is_authenticated %}
-        <a href="#" class="user__cart">Carrito</a>
-        <a href="{% url 'logout' %}" class="user__logout">Cerrar Sesión</a>
-        {% else %}
-        <a href="{% url 'login' %}" class="user__login">Iniciar Sesión</a>
-        <a href="{% url 'signup' %}" class="user__register">Registrarse</a>
-        {% endif %} -->
-        </div>
-      </nav>
+        <nav class="header__nav">
+            <div class="header__logo">
+                <a href="{% url 'lista-productos' %}" class="logo">Mi Sitio Web</a>
+            </div>
+            <div class="header__search">
+                <i class="fas fa-search"></i>
+                <input type="text" class="search__input" placeholder="Buscar...">
+                <button class="search__button">Buscar</button>
+            </div>
+            <div class="header__user">
+                <!-- {% if user.is_authenticated %}
+                <a href="#" class="user__cart">Carrito</a>
+                <a href="{% url 'logout' %}" class="user__logout">Cerrar Sesión</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="user__login">Iniciar Sesión</a>
+                <a href="{% url 'signup' %}" class="user__register">Registrarse</a>
+                {% endif %} -->
+            </div>
+        </nav>
     </header>
-
     <main class="main-content">
-      {% block content %}
-      <!-- Contenido del bloque 'content' -->
-      {% endblock %}
+        {% block content %}
+        <!-- Contenido del bloque 'content' -->
+        {% endblock %}
     </main>
-
     <footer class="footer">
-      <div class="seccion__contenedor">
-        <div class="footer__contacto">
-          <!-- Agregar el icono de contacto -->
-          <h3><i class="fas fa-envelope"></i> Contacto</h3>
-          <p>Dirección: Calle Principal 123, Ciudad</p>
-          <p>Email: info@example.com</p>
-          <p>Teléfono: +123 456 789</p>
+        <div class="seccion__contenedor">
+            <div class="footer__contacto">
+                <h3><i class="fas fa-envelope"></i> Contacto</h3>
+                <p>Dirección: Calle Principal 123, Ciudad</p>
+                <p>Email: info@example.com</p>
+                <p>Teléfono: +123 456 789</p>
+            </div>
+            <div class="footer__redes-sociales">
+                <h3><i class="fa-solid fa-thumbtack"></i> Redes Sociales</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer__politica">
+                <h3><i class="fas fa-file-alt"></i> Política</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-gavel"></i> Términos y condiciones</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i> Política de privacidad</a></li>
+                </ul>
+            </div>
         </div>
-
-        <div class="footer__redes-sociales">
-          <!-- Agregar el icono de redes sociales -->
-          <h3><i class="fab fa-facebook"></i> Redes Sociales</h3>
-          <ul>
-            <li>
-              <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-            </li>
-          </ul>
+        <div class="footer__copyright">
+            <p>&copy; {% now "Y" %} Mi Sitio Web. Todos los derechos reservados.</p>
         </div>
-
-        <div class="footer__politica">
-          <!-- Agregar el icono de política -->
-          <h3><i class="fas fa-file-alt"></i> Política</h3>
-          <ul>
-            <li>
-              <a href="#"
-                ><i class="fas fa-gavel"></i> Términos y condiciones</a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="fas fa-shield-alt"></i> Política de privacidad</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer__copyright">
-        <p>&copy; {% now "Y" %} Mi Sitio Web. Todos los derechos reservados.</p>
-      </div>
     </footer>
-  </body>
-  <script src="{% static 'js/index.js' %}"></script>
-  <!-- Agrega los enlaces a las librerías de jQuery, Font Awesome y Slick Carousel -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
-  />
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</body>
 </html>

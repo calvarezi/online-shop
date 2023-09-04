@@ -127,7 +127,6 @@
         <a href="" class="ver-mas__enlace">Ver más</a>
       </div>
     </div>
-
     <div class="oferta_img_contenedor">
       <div class="oferta_item">
         <a href="">
@@ -175,7 +174,6 @@
       </div>
     </div>
   </div>
-
   <div class="user__item">
     <div class="user__saludo">
       <span>Bienvenid@ a ShopExpress</span>
@@ -198,17 +196,146 @@
     </div>
   </div>
 </div>
-<div class="main-content">
-  <div class="mosaico-productos">
-    {% for producto in productos %}
-    <div class="producto-card">
-      <a href="{% url 'detalle-producto' producto.slug %}">
-        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
+
+<div class="contenedor-plus">
+  <div class="plus-info">
+    <a href="#" class="oferta-link">
+      <img
+        src="https://ae01.alicdn.com/kf/S78bebe84e585478e84daa0770c4c4e63B/157x96.png_.webp"
+        alt="Oferta"
+        class="oferta-imagen"
+      />
+      <p class="oferta-descripcion">
+        Hasta -50% de descuento · Envíos en 72 horas
+      </p>
+    </a>
+    <div class="ver-mas">
+      <a href="#" class="ver-mas__enlace">Ver más</a>
+    </div>
+  </div>
+  <div class="plus-cont-img">
+    <div class="plus-item">
+      <a href="#">
+        <div>
+          <img
+            src="{% static 'img/Novedades/imagen7.jpg' %}"
+            alt="Producto 1"
+          />
+        </div>
+        <div class="plus-precio">
+          <span class="cop">cop</span>
+          <span class="precio-plus">12.371</span>
+        </div>
       </a>
-      <h3>{{ producto.nombre }}</h3>
-      <p>Precio: ${{ producto.precio }}</p>
+    </div>
+    <div class="plus-item">
+      <a href="#">
+        <div>
+          <img
+            src="{% static 'img/Novedades/imagen7.jpg' %}"
+            alt="Producto 2"
+          />
+        </div>
+        <div class="plus-precio">
+          <span class="cop">cop</span>
+          <span class="precio-plus">12.371</span>
+        </div>
+      </a>
+    </div>
+    <div class="plus-item">
+      <a href="#">
+        <div>
+          <img
+            src="{% static 'img/Novedades/imagen7.jpg' %}"
+            alt="Producto 2"
+          />
+        </div>
+        <div class="plus-precio">
+          <span class="cop">cop</span>
+          <span class="precio-plus">12.371</span>
+        </div>
+      </a>
+    </div>
+    <div class="plus-item">
+      <a href="#">
+        <div>
+          <img
+            src="{% static 'img/Novedades/imagen7.jpg' %}"
+            alt="Producto 2"
+          />
+        </div>
+        <div class="plus-precio">
+          <span class="cop">cop</span>
+          <span class="precio-plus">12.371</span>
+        </div>
+      </a>
+    </div>
+    <div class="plus-item">
+      <a href="#">
+        <div>
+          <img
+            src="{% static 'img/Novedades/imagen7.jpg' %}"
+            alt="Producto 2"
+          />
+        </div>
+        <div class="plus-precio">
+          <span class="cop">cop</span>
+          <span class="precio-plus">12.371</span>
+        </div>
+      </a>
+    </div>
+    <div class="plus-item">
+      <a href="#">
+        <div>
+          <img
+            src="{% static 'img/Novedades/imagen7.jpg' %}"
+            alt="Producto 2"
+          />
+        </div>
+        <div class="plus-precio">
+          <span class="cop">cop</span>
+          <span class="precio-plus">12.371</span>
+        </div>
+      </a>
+    </div>
+    <div class="plus-item">
+      <a href="#">
+        <div>
+          <img
+            src="{% static 'img/Novedades/imagen7.jpg' %}"
+            alt="Producto 2"
+          />
+        </div>
+        <div class="plus-precio">
+          <span class="cop">cop</span>
+          <span class="precio-plus">12.371</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="secound-content">
+  <h2 class="secound-content__title">
+    <div class="secound-content__title-line"></div>
+    <div class="secound-content__title-text">Seguro te gustará</div>
+    <div class="secound-content__title-line"></div>
+  </h2>
+  <div class="secound-content__mosaico-productos">
+    {% for producto in productos %}
+    <div class="secound-content__producto-card">
+      <div class="secound-content__producto__img">
+        <a href="{% url 'detalle-producto' producto.slug %}">
+          <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
+        </a>
+      </div>
+      <h3 class="secound-content__producto-nombre">{{ producto.nombre }}</h3>
+      <p class="secound-content__producto-precio">
+        Precio: ${{ producto.precio }}
+      </p>
     </div>
     {% endfor %}
   </div>
 </div>
+
 {% endblock %}
