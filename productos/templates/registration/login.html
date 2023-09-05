@@ -14,21 +14,29 @@
       <div class="login__body">
         <form method="post" class="login__form">
           {% csrf_token %}
-          <div class="login__form-group">
-            {{ form.username.label_tag }} {{ form.username }}
+          <div class="form-control">
+            {{ form.username }}
           </div>
-          <div class="login__form-group">
-            {{ form.password.label_tag }} {{ form.password }}
+          <div class="form-control">
+            {{ form.password }}
+          </div>
+          <div class="password_reset">
+            <a href="" class="password_reset__link">¿Haz olvidado tu contraseña?</a>
           </div>
           {% if form.errors %}
           <p class="login__error">Usuario o contraseña incorrecto</p>
           {% endif %}
-          <button class="login__submit-btn btn btn-primary btn-block">
-            Iniciar sesión
-          </button>
+          <div class="cont__links">
+            <a href="{% url 'signup' %}">Crear cuenta</a>
+            <button class="boton_login" type="submit">
+              Iniciar sesión
+            </button>
+          </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock %}
+

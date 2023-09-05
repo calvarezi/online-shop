@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
 
+
 class SignUpForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -30,6 +31,7 @@ class SignUpForm(UserCreationForm):
             raise forms.ValidationError('Las contraseñas no coinciden')
         return password2
 
+
 class CustomLoginForm(AuthenticationForm):
     username = forms.CharField(
         widget=forms.TextInput(
@@ -41,7 +43,6 @@ class CustomLoginForm(AuthenticationForm):
             attrs={'class': 'form-control', 'placeholder': 'Contraseña'}),
         label=_('Contraseña')
     )
-
     error_messages = {
         'invalid_login': _(
             "Por favor, introduzca un %(username)s válido y una contraseña correcta."

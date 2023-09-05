@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Producto, Categoria, Subcategoria
 from django.views.generic.detail import DetailView
-from .forms import SignUpForm
+from .forms import CustomLoginForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.db.models import Q
@@ -39,6 +39,6 @@ class ProductoDetailView(DetailView):
 
 
 class SignupView(CreateView):
-    form_class = SignUpForm
+    form_class = CustomLoginForm
     success_url = reverse_lazy('lista-productos')
     template_name = 'registration/signup.html'
