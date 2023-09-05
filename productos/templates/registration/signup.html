@@ -1,45 +1,48 @@
-{% extends 'base.html' %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/singup.css' %}">
+</head>
 
 {% block content %}
+<div class="user-registration">
+  <div class="user-registration__container">
+    <h2 class="user-registration__title">Registro de Usuario</h2>
 
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-  
-    <h2 class="text-center mb-4">Registro de Usuario</h2>
-
-    <div class="card p-4">
-    
-      <form method="POST">
-      
+    <div class="user-registration__card">
+      <form method="POST" class="user-registration__form">
         {% csrf_token %}
-        
-        {{ form.as_p }}
-        
-        {% if form.non_field_errors %}
-         <p class="text-danger">
-           {{ form.non_field_errors }}
-         </p>
-        {% endif %}
-
-        {% if form.username.errors %}
-         <p class="text-danger">
-           {{ form.username.errors }}
-         </p>
-        {% endif %}
-
-        {% if form.password2.errors %}
-         <p class="text-danger">
-           {{ form.password2.errors }} 
-         </p>
-        {% endif %}
-      
-        <button class="btn btn-primary btn-block">Registrarse</button>
-      
+        <div class="form-group">
+          {{ form.username }}
+          {% if form.username.errors %}
+            <p class="user-registration__error-message">{{ form.username.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.email }}
+          {% if form.email.errors %}
+            <p class="user-registration__error-message">{{ form.email.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.password1 }}
+          {% if form.password1.errors %}
+            <p class="user-registration__error-message">{{ form.password1.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.password2 }}
+          {% if form.password2.errors %}
+            <p class="user-registration__error-message">{{ form.password2.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="cont__links">
+        <a href="{% url 'login' %}">Iniciar sesion</a>
+        <button class="btn btn-primary user-registration__submit-button">Registrarse</button>
+      </div>
       </form>
-    
+     </div>
     </div>
-
   </div>
 </div>
-
 {% endblock %}

@@ -1,9 +1,7 @@
 {% load static %}
-
 <head>
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
-
 {% block content %}
 <div class="login">
   <div class="login__container">
@@ -14,10 +12,10 @@
       <div class="login__body">
         <form method="post" class="login__form">
           {% csrf_token %}
-          <div class="form-control">
+          <div class="form-group">
             {{ form.username }}
           </div>
-          <div class="form-control">
+          <div class="form-group">
             {{ form.password }}
           </div>
           <div class="password_reset">
@@ -37,6 +35,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}
-

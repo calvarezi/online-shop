@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from .models import Producto, Categoria, Subcategoria
 from django.views.generic.detail import DetailView
-from .forms import CustomLoginForm
+from .forms import CustomLoginForm, SignUpForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.db.models import Q
+from django.contrib.auth.views import LoginView
+
 
 
 
@@ -16,10 +18,10 @@ def lista_productos(request):
     context = {
         'categorias': categorias,
         'productos': productos
-
     }
-
     return render(request, 'productos/lista.html', context)
+
+
 
 def search_results_view(request):
     template_name = "productos/search_results.html"
@@ -39,6 +41,15 @@ class ProductoDetailView(DetailView):
 
 
 class SignupView(CreateView):
-    form_class = CustomLoginForm
+    form_class = SignUpForm
     success_url = reverse_lazy('lista-productos')
     template_name = 'registration/signup.html'
+
+
+class CustomLoginView(LoginView):
+    form_class = CustomLoginForm
+    template_name = 'registration/login.html'  # Asegúrate de que la ruta sea correcta
+    success_url = reverse_lazy('lista-productos')
+
+
+
