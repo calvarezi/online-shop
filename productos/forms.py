@@ -50,9 +50,9 @@ class SignUpForm(UserCreationForm):
 class CustomLoginForm(AuthenticationForm):
     username = forms.CharField(
         label=_('Nombre de usuario'),
-        widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'username', 'data-placeholder': 'Username' })
+        widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'username', 'placeholder': 'Username' })
     )
     password = forms.CharField(
         label=_('Contraseña'),
-        widget=forms.PasswordInput(attrs={'class': 'form-control','autocomplete': 'current-password', 'data-placeholder': 'Contraseña'})
+        widget=forms.PasswordInput(attrs={'class': 'form-control','autocomplete': 'password', 'placeholder': 'Contraseña'})
     )
