@@ -1,21 +1,18 @@
-
-
-
 {% extends "base.html" %}
+
 {% block content %}
-  <h1>Ofertas</h1>
+  <h1>Productos en Oferta</h1>
   <ul>
-    {% for oferta in ofertas %}
+    {% for producto in productos_en_oferta %}
       <li>
-        <h2>{{ oferta.producto.nombre }}</h2>
-        <p>Descripción: {{ oferta.producto.descripcion }}</p>
-        <p>Precio original: {{ oferta.producto.precio }}</p>
-        <p>Descuento: {{ oferta.descuento }}%</p>
-        <p>Fecha de inicio: {{ oferta.fecha_inicio }}</p>
-        <p>Fecha de fin: {{ oferta.fecha_fin }}</p>
+        <h2>{{ producto.nombre }}</h2>
+        <p>Descripción: {{ producto.descripcion }}</p>
+        <p>Precio: ${{ producto.precio }}</p>
+        <p>Stock Disponible: {{ producto.stock }}</p>
+        <!-- Agrega aquí más detalles del producto si es necesario -->
       </li>
     {% empty %}
-      <p>No hay ofertas disponibles en este momento.</p>
+      <p>No hay productos en oferta en este momento.</p>
     {% endfor %}
   </ul>
 {% endblock %}

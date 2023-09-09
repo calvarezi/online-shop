@@ -325,7 +325,7 @@
     {% for producto in productos %}
     <div class="secound-content__producto-card">
       <div class="secound-content__producto__img">
-        <a href="{% url 'detalle-producto' producto.slug %}">
+        <a href="{% url 'detalle-producto' producto.id %}">
           <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
         </a>
       </div>
