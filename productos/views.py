@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from .models import Producto, Categoria, Subcategoria
+from .models import Producto, Categoria, Subcategoria, Oferta
 from django.views.generic.detail import DetailView
 from .forms import CustomLoginForm, SignUpForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.db.models import Q
 from django.contrib.auth.views import LoginView
+from django.utils import timezone
+
 
 
 
@@ -53,3 +55,6 @@ class CustomLoginView(LoginView):
 
 
 
+def lista_ofertas(request):
+    ofertas = Oferta.objects.filter(fecha_inicio__lte=timezone.now(), fecha_fin__gte=timezone.now())
+    return render(request, 'lista_ofertas.html', {'ofertas': ofertas})

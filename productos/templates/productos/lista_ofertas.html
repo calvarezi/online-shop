@@ -1,0 +1,21 @@
+
+
+
+{% extends "base.html" %}
+{% block content %}
+  <h1>Ofertas</h1>
+  <ul>
+    {% for oferta in ofertas %}
+      <li>
+        <h2>{{ oferta.producto.nombre }}</h2>
+        <p>Descripción: {{ oferta.producto.descripcion }}</p>
+        <p>Precio original: {{ oferta.producto.precio }}</p>
+        <p>Descuento: {{ oferta.descuento }}%</p>
+        <p>Fecha de inicio: {{ oferta.fecha_inicio }}</p>
+        <p>Fecha de fin: {{ oferta.fecha_fin }}</p>
+      </li>
+    {% empty %}
+      <p>No hay ofertas disponibles en este momento.</p>
+    {% endfor %}
+  </ul>
+{% endblock %}

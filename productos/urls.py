@@ -7,13 +7,17 @@ from . import views
 
 
 urlpatterns = [
-    path('home/', views.lista_productos, name='lista-productos' ),
+    path('home/', views.lista_productos, name='lista-productos'),
     path('buscar/', views.search_results_view, name='buscar'),
-    path('producto/<slug:slug>/', ProductoDetailView.as_view(), name='detalle-producto'),
+    path('producto/<slug:slug>/', ProductoDetailView.as_view(),
+         name='detalle-producto'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('password-reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('password-reset/', auth_views.PasswordResetView.as_view(),
+         name='password_reset'),
     path('signup/', SignupView.as_view(), name='signup'),
+    path('ofertas/', views.lista_ofertas, name='lista_ofertas'),
+
 
 
 ]
