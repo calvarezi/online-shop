@@ -12,11 +12,12 @@ def lista_productos(request):
     categorias = Categoria.objects.all()
     productos = Producto.objects.all()
     ofertas = Oferta.objects.all()
+    productos_en_oferta = Producto.objects.filter(en_oferta=True, oferta__in=ofertas)
 
     context = {
         'categorias': categorias,
         'productos': productos,
-        'ofertas': ofertas,
+        'productos_en_oferta': productos_en_oferta,
     }
     return render(request, 'productos/lista.html', context)
 

@@ -115,7 +115,7 @@
 
   <div class="ofertas__item">
     <div class="oferta__info">
-      <a href="" class="oferta__link">
+      <a href="#" class="oferta__link">
         <img
           src="https://ae01.alicdn.com/kf/S12d218f2404348e4986aad8f45e62b7dO/471x96.png_.webp"
           alt=""
@@ -128,52 +128,22 @@
       </div>
     </div>
     <div class="oferta_img_contenedor">
+      {% for oferta in productos_en_oferta %}
       <div class="oferta_item">
-        <a href="">
+        <a href="{% url 'detalle-producto' oferta.pk %}">
           <div>
-            <img src="{% static 'img/Novedades/imagen7.jpg' %}" alt="" />
+            <img src="{{ oferta.imagen.url }}" alt="{{ oferta.descripcion }}" />
           </div>
           <div class="oferta_precio">
             <span class="cop">cop</span>
-            <span class="precio_oferta">12.371</span>
+            <span class="precio_oferta">{{ oferta.precio_original }}</span>
           </div>
         </a>
       </div>
-      <div class="oferta_item">
-        <a href="">
-          <div>
-            <img src="{% static 'img/Novedades/imagen7.jpg' %}" alt="" />
-          </div>
-          <div class="oferta_precio">
-            <span class="cop">cop</span>
-            <span class="precio_oferta">18.756</span>
-          </div>
-        </a>
-      </div>
-      <div class="oferta_item">
-        <a href="">
-          <div>
-            <img src="{% static 'img/Novedades/imagen7.jpg' %}" alt="" />
-          </div>
-          <div class="oferta_precio">
-            <span class="cop">cop</span>
-            <span class="precio_oferta">125.700</span>
-          </div>
-        </a>
-      </div>
-      <div class="oferta_item">
-        <a href="">
-          <div>
-            <img src="{% static 'img/Novedades/imagen7.jpg' %}" alt="" />
-          </div>
-          <div class="oferta_precio">
-            <span class="cop">cop</span>
-            <span class="precio_oferta">549.034</span>
-          </div>
-        </a>
-      </div>
+      {% endfor %}
     </div>
   </div>
+
   <div class="user__item">
     <div class="user__saludo">
       <span>Bienvenid@ a ShopExpress</span>
@@ -325,13 +295,13 @@
     {% for producto in productos %}
     <div class="secound-content__producto-card">
       <div class="secound-content__producto__img">
-        <a href="{% url 'detalle-producto' producto.id %}">
+        <a href="{% url 'detalle-producto' producto.pk%}">
           <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
         </a>
       </div>
       <h3 class="secound-content__producto-nombre">{{ producto.nombre }}</h3>
       <p class="secound-content__producto-precio">
-        Precio: ${{ producto.precio }}
+        Precio: ${{ producto.precio_original }}
       </p>
     </div>
     {% endfor %}
