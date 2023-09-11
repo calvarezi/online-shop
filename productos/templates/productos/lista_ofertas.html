@@ -1,18 +1,30 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-  <h1>Productos en Oferta</h1>
-  <ul>
+<div class="contenedor-ofertas">
+  <h2 class="secound-content__title">
+    <div class="secound-content__title-line"></div>
+    <div class="secound-content__title-text">Productos en oferta </div>
+    <div class="secound-content__title-line"></div>
+  </h2>
+  <div class="contenedor-mosaico">
     {% for producto in productos_en_oferta %}
-      <li>
-        <h2>{{ producto.nombre }}</h2>
-        <p>Descripción: {{ producto.descripcion }}</p>
-        <p>Precio: ${{ producto.precio }}</p>
-        <p>Stock Disponible: {{ producto.stock }}</p>
-        <!-- Agrega aquí más detalles del producto si es necesario -->
-      </li>
+    <div class="contenedor-card card">
+      <div class="contenedor-img card-image">
+        <a href="{% url 'detalle-producto' producto.pk%}">
+          <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
+        </a>
+      </div>
+      <h3 class="name heading">{{ producto.nombre }}</h3>
+      <p class="secound-content__producto-precio author">
+        <!-- Aquí debes mostrar el precio con descuento, por ejemplo: -->
+        Precio con descuento: COP {{ producto.precio_con_descuento_formateado }}
+      </p>
+    </div>
     {% empty %}
-      <p>No hay productos en oferta en este momento.</p>
+    <p>No hay productos en oferta en este momento.</p>
     {% endfor %}
-  </ul>
+  </div>
+</div>
 {% endblock %}

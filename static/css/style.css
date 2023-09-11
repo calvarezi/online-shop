@@ -394,7 +394,6 @@ body {
   object-fit: contain;
 }
 
-
 .ofertas__item {
   grid-area: ofertas;
   background-color: #ffff;
@@ -480,14 +479,27 @@ body {
   border-radius: 5px;
 }
 
-.oferta_precio span {
+/* Estilo para el precio original */
+.precio_original {
+  color: gray; /* Cambia el color a gris */
+  font-size: 0.8em; /* Reduce el tamaño de fuente */
+  text-decoration: line-through; /* Aplica tachado */
+}
+
+/* Estilo para el precio con descuento */
+.precio_descuento {
+  /* Puedes dejar este espacio en blanco o aplicar otros estilos según sea necesario */
   color: rgb(255, 0, 0);
 }
 
+
 .precio_oferta {
-  font-size: 1.2em;
+  font-size: 18px;
   font-weight: bold !important;
+  display: flex;
+  flex-direction: column;
 }
+
 
 
 .user__item {
