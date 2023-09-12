@@ -185,104 +185,21 @@
     </div>
   </div>
   <div class="plus-cont-img">
+    {% for plus in productos_plus %}
     <div class="plus-item">
-      <a href="#">
+      <a href="{% url 'detalle-producto' plus.pk %}">
         <div>
-          <img
-            src="{% static 'img/Novedades/imagen7.jpg' %}"
-            alt="Producto 1"
-          />
+          <img src="{{ plus.imagen.url }}" alt="{{ plus.descripcion }}" />
         </div>
-        <div class="plus-precio">
-          <span class="cop">cop</span>
-          <span class="precio-plus">12.371</span>
+        <div class="precio_oferta">
+          <span class="precio_original">COP: {{ plus.precio_original_formateado }}</span>
+          <span class="precio_descuento">COP: {{ plus.precio_con_descuento_formateado }}</span>
         </div>
       </a>
     </div>
-    <div class="plus-item">
-      <a href="#">
-        <div>
-          <img
-            src="{% static 'img/Novedades/imagen7.jpg' %}"
-            alt="Producto 2"
-          />
-        </div>
-        <div class="plus-precio">
-          <span class="cop">cop</span>
-          <span class="precio-plus">12.371</span>
-        </div>
-      </a>
-    </div>
-    <div class="plus-item">
-      <a href="#">
-        <div>
-          <img
-            src="{% static 'img/Novedades/imagen7.jpg' %}"
-            alt="Producto 2"
-          />
-        </div>
-        <div class="plus-precio">
-          <span class="cop">cop</span>
-          <span class="precio-plus">12.371</span>
-        </div>
-      </a>
-    </div>
-    <div class="plus-item">
-      <a href="#">
-        <div>
-          <img
-            src="{% static 'img/Novedades/imagen7.jpg' %}"
-            alt="Producto 2"
-          />
-        </div>
-        <div class="plus-precio">
-          <span class="cop">cop</span>
-          <span class="precio-plus">12.371</span>
-        </div>
-      </a>
-    </div>
-    <div class="plus-item">
-      <a href="#">
-        <div>
-          <img
-            src="{% static 'img/Novedades/imagen7.jpg' %}"
-            alt="Producto 2"
-          />
-        </div>
-        <div class="plus-precio">
-          <span class="cop">cop</span>
-          <span class="precio-plus">12.371</span>
-        </div>
-      </a>
-    </div>
-    <div class="plus-item">
-      <a href="#">
-        <div>
-          <img
-            src="{% static 'img/Novedades/imagen7.jpg' %}"
-            alt="Producto 2"
-          />
-        </div>
-        <div class="plus-precio">
-          <span class="cop">cop</span>
-          <span class="precio-plus">12.371</span>
-        </div>
-      </a>
-    </div>
-    <div class="plus-item">
-      <a href="#">
-        <div>
-          <img
-            src="{% static 'img/Novedades/imagen7.jpg' %}"
-            alt="Producto 2"
-          />
-        </div>
-        <div class="plus-precio">
-          <span class="cop">cop</span>
-          <span class="precio-plus">12.371</span>
-        </div>
-      </a>
-    </div>
+    {% endfor %}
+  </div>
+  
   </div>
 </div>
 
@@ -300,10 +217,12 @@
           <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" />
         </a>
       </div>
-      <h3 class="secound-content__producto-nombre">{{ producto.nombre }}</h3>
-      <p class="secound-content__producto-precio">
-        Precio: {{ producto.precio_original_formateado }}
-      </p>
+      <div class="secound-content-info">
+        <h3 class="secound-content__producto-nombre">{{ producto.nombre }}</h3>
+        <p class="secound-content__producto-precio">
+          Precio: {{ producto.precio_original_formateado }}
+        </p>
+      </div>
     </div>
     {% endfor %}
   </div>
