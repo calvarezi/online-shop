@@ -37,28 +37,9 @@ class Producto(models.Model):
         max_digits=10, decimal_places=2, blank=True, null=True)
     en_plus = models.BooleanField(default=False)
     plus = models.ForeignKey('Plus', on_delete=models.SET_NULL, null=True, blank=True, related_name='productos_plus')
+    precio_con_descuento_plus = models.DecimalField(
+    max_digits=10, decimal_places=2, blank=True, null=True)
 
-
-    def calcular_precio_con_descuento(self):
-        if self.en_oferta and self.oferta:
-            # Obtener el porcentaje de descuento de la oferta
-            porcentaje_descuento_oferta = self.oferta.porcentaje_descuento
-
-            # Calcular el precio con descuento
-            precio_con_descuento = self.precio_original - \
-                (self.precio_original * porcentaje_descuento_oferta / 100)
-
-            return precio_con_descuento
-        else:
-            return self.precio_original
-        
-    def calcular_precio_plus(self):
-        if self.en_plus and self.oferta:
-            porcentaje_descuento_oferta = self.oferta.porcentaje_descuento
-            precio_con_descuento_plus = self.precio_original - (self.precio_original * porcentaje_descuento_oferta / 100)
-            return precio_con_descuento_plus
-        else:
-            return self.precio_original
 
     def precio_original_formateado(self):
         return locale.format_string("%.0f", self.precio_original, grouping=True)
@@ -69,15 +50,9 @@ class Producto(models.Model):
         else:
             return None
         
-
-        
-    def eliminar_imagen_producto(sender, instance, **kwargs):
-    # Borra la imagen asociada al producto al eliminar el producto
-        if instance.imagen:
-            instance.imagen.delete(save=False)
-
     def save(self, *args, **kwargs):
-        self.precio_con_descuento = self.calcular_precio_con_descuento()
+        self.precio_con_descuento = calcular_precio_con_descuento(self)
+        self.precio_con_descuento_plus = calcular_precio_plus(self)
         self.slug = slugify(self.nombre)
         super(Producto, self).save(*args, **kwargs)
 
@@ -104,6 +79,7 @@ def actualizar_precios_con_descuento(sender, instance, **kwargs):
     # Recalcula los precios con descuento para todos los productos relacionados a la oferta
     productos_afectados = Producto.objects.filter(oferta=instance)
     for producto in productos_afectados:
+        producto.precio_con_descuento = calcular_precio_con_descuento(producto)
         producto.save()
 
 class Plus(models.Model):
@@ -127,3 +103,31 @@ class Plus(models.Model):
 
     def __str__(self):
         return f"Plus para {self.producto.nombre}"
+
+@receiver(pre_delete, sender=Producto)
+def eliminar_imagen_producto(sender, instance, **kwargs):
+    # Borra la imagen asociada al producto al eliminar el producto
+    if instance.imagen:
+        instance.imagen.delete(save=False)
+
+
+def calcular_precio_con_descuento(producto):
+    if producto.en_oferta and producto.oferta:
+        # Obtener el porcentaje de descuento de la oferta
+        porcentaje_descuento_oferta = producto.oferta.porcentaje_descuento
+
+        # Calcular el precio con descuento
+        precio_con_descuento = producto.precio_original - \
+            (producto.precio_original * porcentaje_descuento_oferta / 100)
+
+        return precio_con_descuento
+    else:
+        return producto.precio_original
+
+def calcular_precio_plus(producto):
+    if producto.en_plus and producto.oferta:
+        porcentaje_descuento_oferta = producto.oferta.porcentaje_descuento
+        precio_con_descuento_plus = producto.precio_original - (producto.precio_original * porcentaje_descuento_oferta / 100)
+        return precio_con_descuento_plus
+    else:
+        return producto.precio_original
